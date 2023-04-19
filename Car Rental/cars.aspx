@@ -10,7 +10,9 @@
         box-shadow: 2px 2px 6px #ccc;
         margin: 10px;
         padding: 10px;
-        width: 300px;
+        width: 800px;
+        margin-left:320px;
+       
     }
 
     .carHeader {
@@ -68,7 +70,7 @@
   border-radius: 4px;
 }
 
-btn-review:hover,.btn-details:hover {
+btn-review,.btn-details:hover {
   background-color: #3e8e41;
 }
 
