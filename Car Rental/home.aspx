@@ -17,7 +17,7 @@
 	<div class="navbar">
 		<ul class="options">
 			
-				<li><a href="#">Home</a></li>
+				<li><a href="/home.aspx?id=<%=id%>">Home</a></li>
 				<li><a href="./cars.aspx?id=<%=id%>">See Cars</a></li>
 				<li><a href="./uploadYourCar.aspx?id=<%=id%>">Upload Car</a></li>
 				<li><a href="UploadedCars.aspx?id=<%=id%>">Uploaded Cars</a></li>

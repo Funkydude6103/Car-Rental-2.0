@@ -92,14 +92,15 @@ btn-review:hover,.btn-details:hover {
     <div class="navbar">
       <ul class="options">
         
-          <li><a href="./home.aspx">Home</a></li>
-          <li><a href="./cars.aspx">See Cars</a></li>
-          <li><a href="./uploadYourCar.aspx">Upload Car</a></li>
-          <li><a href="UploadedCars.aspx">Uploaded Cars</a></li>
-          <li><a href="RequestsSent.aspx">Requests Sent</a></li>
-          <li><a href="HIstory.aspx">History</a></li>
-          <li><a href="User Profile.aspx">User Profile</a></li>
-          <li><a href="Contact Us.aspx">Contact Us</a></li>
+                 <li><a href="/home.aspx?id=<%=id%>">Home</a></li>
+				<li><a href="./cars.aspx?id=<%=id%>">See Cars</a></li>
+				<li><a href="./uploadYourCar.aspx?id=<%=id%>">Upload Car</a></li>
+				<li><a href="UploadedCars.aspx?id=<%=id%>">Uploaded Cars</a></li>
+				<li><a href="RequestsSent.aspx?id=<%=id%>">Requests Sent</a></li>
+				<li><a href="HIstory.aspx?id=<%=id%>">History</a></li>
+				<li><a href="User Profile.aspx?id=<%=id%>">User Profile</a></li>
+				<li><a href="Contact Us.aspx?id=<%=id%>">Contact Us</a></li>
+		
       
       </ul>
     </div>

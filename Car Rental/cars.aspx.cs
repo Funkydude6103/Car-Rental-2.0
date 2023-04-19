@@ -12,9 +12,19 @@ namespace Car_Rental
 {
     public partial class cars : System.Web.UI.Page
     {
-        protected string id;
-        protected void Page_Load(object sender, EventArgs e)
-        {
+
+        protected int id;
+       
+          
+            protected void Page_Load(object sender, EventArgs e)
+           {
+            if (!IsPostBack)
+            {
+                if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+                {
+                    id = int.Parse(Request.QueryString["id"]);
+                }
+            }
             string connectionString = WebConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -25,7 +35,6 @@ namespace Car_Rental
                 int counter = 0;
                 while (reader.Read())
                 {
-                    id = reader["car_id"].ToString();
                     string make = reader["make"].ToString();
                     string model = reader["model"].ToString();
                     int year = Convert.ToInt32(reader["year"]);
