@@ -18,7 +18,7 @@
 		<ul class="options">
 			
 				<li><a href="#">Home</a></li>
-				<li><a href="./cars.aspx">See Cars</a></li>
+				<li><a href="./cars.aspx?id=<%=id%>">See Cars</a></li>
 				<li><a href="./uploadYourCar.aspx?id=<%=id%>">Upload Car</a></li>
 				<li><a href="UploadedCars.aspx?id=<%=id%>">Uploaded Cars</a></li>
 				<li><a href="RequestsSent.aspx?id=<%=id%>">Requests Sent</a></li>
