@@ -15,16 +15,19 @@ namespace Car_Rental
 
         protected int id;
        
-          
-            protected void Page_Load(object sender, EventArgs e)
+
+
+        protected void Page_Load(object sender, EventArgs e)
            {
             if (!IsPostBack)
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
                     id = int.Parse(Request.QueryString["id"]);
+
                 }
             }
+           
             string connectionString = WebConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -69,7 +72,7 @@ namespace Car_Rental
                     carFooterPanel.CssClass = "carFooter";
 
                     Label priceLabel = new Label();
-                    priceLabel.Text = string.Format("<strong>Price per Hour:</strong> {0:C}", price);
+                    priceLabel.Text = string.Format("<strong>Price per Hour:</strong> {0:N} PKR", price);
                     carFooterPanel.Controls.Add(priceLabel);
 
                     carPanel.Controls.Add(carFooterPanel);
@@ -100,7 +103,7 @@ namespace Car_Rental
             string buttonID = reviewButton.ID;
             int carIndex = int.Parse(buttonID.Replace("ReviewButton", ""));
             string carID = GetCarID(carIndex);
-            Response.Redirect("Review.aspx?carid=" + carID);
+            Response.Redirect("Review.aspx?carid=" + carID+"&userid="+id.ToString());
         }
 
         protected void DetailsButton_Click(object sender, EventArgs e)
@@ -109,7 +112,7 @@ namespace Car_Rental
             string buttonID = detailsButton.ID;
             int carIndex = int.Parse(buttonID.Replace("sdf", ""));
             string carID = GetCarID(carIndex);
-            Response.Redirect("Car Details.aspx?carid=" + carID);
+            Response.Redirect("Car Details.aspx?carid=" + carID + "&userid=" + int.Parse(Request.QueryString["id"]));
         }
         private string GetCarID(int index)
         {
