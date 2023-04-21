@@ -48,16 +48,16 @@ namespace Car_Rental
                 decimal price = reader.GetDecimal(4);
                 string image_url = Convert.ToBase64String((byte[])reader["image_url"]);
 
-                string car_card_html = "<div class=\"car-card\">" +
+                string car_card_html = "<div class=\"car-card\" runat=\"\">" +
                                        $"<h2>{make} {model}</h2>" +
                                        $"<img src=\"data:image/jpeg;base64,{image_url}\" alt=\"{make} {model}\">" +
                                        $"<p><strong>Model:</strong> {model}</p>" +
                                        $"<p><strong>Year:</strong> {year}</p>" +
                                        $"<p><strong>Price per Hour:</strong> {price:C}</p>" +
                                        $"<button>Edit</button>&nbsp;" +
-                                       $"<button onclick=\"deleteCar({car_id})\">Delete</button>&nbsp;" +
-                                       "<button onclick=\"window.location.href = 'Car Request Details.aspx';\">Requests</button>&nbsp;" +
-                                       "<button onclick=\"window.location.href = 'Review.aspx';\">Check Reviews</button>" +
+                                       $"<button onclick=\"window.location.href = 'deleteComfirmation.aspx?carid={car_id}&id={Request.QueryString["id"]}';\">Delete</button>&nbsp;" +
+                                       $"<button onclick=\"window.location.href = 'Car Request Details.aspx?carid={car_id}&id={Request.QueryString["id"]}';\">Requests</button>&nbsp;" +
+                                       $"<button onclick=\"window.location.href = 'Review.aspx?carid={car_id}&id={Request.QueryString["id"]}';\">Check Reviews</button>" +
                                        "</div>";
 
                 container.InnerHtml += car_card_html;
@@ -66,13 +66,8 @@ namespace Car_Rental
             // Close the database connection
             reader.Close();
             connection.Close();
-
-
         }
-        protected void FRFR(object sender, EventArgs e)
-        {
-
-            
-        }
+     
+        
     }
 }

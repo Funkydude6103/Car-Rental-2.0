@@ -123,6 +123,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="deleteComfirmation.aspx" />
     <Content Include="Give Review.aspx" />
     <Content Include="HIstory.aspx" />
     <Content Include="home.aspx" />
@@ -225,6 +226,13 @@
     </Compile>
     <Compile Include="Contact Us.aspx.designer.cs">
       <DependentUpon>Contact Us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="deleteComfirmation.aspx.cs">
+      <DependentUpon>deleteComfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="deleteComfirmation.aspx.designer.cs">
+      <DependentUpon>deleteComfirmation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Give Review.aspx.cs">
       <DependentUpon>Give Review.aspx</DependentUpon>

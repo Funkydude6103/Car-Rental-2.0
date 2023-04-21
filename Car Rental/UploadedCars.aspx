@@ -51,15 +51,15 @@ background-color: #3e8e41;
   </header>
     <div class="navbar">
       <ul class="options">
-        
-          <li><a href="./home.aspx">Home</a></li>
-          <li><a href="./cars.aspx">See Cars</a></li>
-          <li><a href="./uploadYourCar.aspx">Upload Car</a></li>
-          <li><a href="UploadedCars.aspx">Uploaded Cars</a></li>
-          <li><a href="RequestsSent.aspx">Requests Sent</a></li>
-          <li><a href="HIstory.aspx">History</a></li>
-          <li><a href="User Profile.aspx">User Profile</a></li>
-          <li><a href="Contact Us.aspx">Contact Us</a></li>
+ <li><a href="./home.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">Home</a></li>
+<li><a href="./cars.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">See Cars</a></li>
+<li><a href="./uploadYourCar.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">Upload Car</a></li>
+<li><a href="UploadedCars.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">Uploaded Cars</a></li>
+<li><a href="RequestsSent.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">Requests Sent</a></li>
+<li><a href="HIstory.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">History</a></li>
+<li><a href="User Profile.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">User Profile</a></li>
+<li><a href="Contact Us.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">Contact Us</a></li>
+
       
       </ul>
     </div>
