@@ -87,7 +87,7 @@
     <input type="datetime-local" id="return-datetime" name="return-datetime" required>
     <br />
         <br />
-    <asp:button type="submit" runat="server" id="Sub" Onclick="Sub_Click" Text="Submit"/>
+    <asp:button type="submit" runat="server" id="Sub" nclick="Sub_Click" Text="Submit"/>
 </form>
 
     <footer>
