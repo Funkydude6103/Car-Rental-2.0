@@ -50,6 +50,12 @@ hr {
   align-items: center;
 }
 
+.carImage {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  margin: 10px;
+}
 /* Style the car image container */
 
 .car-image-container {
@@ -84,14 +90,14 @@ hr {
     <div class="navbar">
 		<ul class="options">
 			
-				<li><a href="home.aspx">Home</a></li>
-				<li><a href="./cars.aspx">See Cars</a></li>
-				<li><a href="./uploadYourCar.aspx">Upload Car</a></li>
-                <li><a href="UploadedCars.aspx">Uploaded Cars</a></li>
-				<li><a href="RequestsSent.aspx">Requests Sent</a></li>
-				<li><a href="HIstory.aspx">History</a></li>
-				<li><a href="User Profile.aspx">User Profile</a></li>
-				<li><a href="Contact Us.aspx">Contact Us</a></li>
+				<li><a href="/home.aspx?id=<%=user_id%>">Home</a></li>
+				<li><a href="./cars.aspx?id=<%=user_id%>">See Cars</a></li>
+				<li><a href="./uploadYourCar.aspx?id=<%=user_id%>">Upload Car</a></li>
+				<li><a href="UploadedCars.aspx?id=<%=user_id%>">Uploaded Cars</a></li>
+				<li><a href="RequestsSent.aspx?id=<%=user_id%>">Requests Sent</a></li>
+				<li><a href="HIstory.aspx?id=<%=user_id%>">History</a></li>
+				<li><a href="User Profile.aspx?id=<%=user_id%>">User Profile</a></li>
+				<li><a href="Contact Us.aspx?id=<%=user_id%>">Contact Us</a></li>
 		
 		</ul>
 	</div>
@@ -123,7 +129,7 @@ hr {
         </div>
     </form>
         <section class="buttonsection">
-            <button  onclick="window.location.href = 'upload.aspx';" class="FillFormButton">Fill Form</button>
+         <button onclick="window.location.href = 'upload.aspx?id=<%=user_id%>&carid=<%=car_id%>';" class="FillFormButton">Fill Form</button>
         </section>
 	</main>
 	<footer>

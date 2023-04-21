@@ -70,27 +70,26 @@
 </div>
 <body>
     <h1>Car Rental System Form</h1>
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+    <form runat="server">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
 
-      <label for="phone">Phone:</label>
-      <input type="tel" id="phone" name="phone" required>
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" required>
 
-      <label for="pickup-date">Pickup Date:</label>
-      <input type="date" id="pickup-date" name="pickup-date" required>
+    <label for="pickup-datetime">Pickup Date and Time:</label>
+    <input type="datetime-local" id="pickup-datetime" name="pickup-datetime" required>
 
-      <label for="return-date">Return Date:</label>
-      <input type="date" id="return-date" name="return-date" required>
+    <label for="return-datetime">Return Date and Time:</label>
+    <input type="datetime-local" id="return-datetime" name="return-datetime" required>
+    <br />
+        <br />
+    <asp:button type="submit" runat="server" id="Sub" Onclick="Sub_Click" Text="Submit"/>
+</form>
 
-     
-
-
-      <input type="submit" value="Submit">
-    </form>
     <footer>
       <p>&copy; 2023 Rent A Wheel</p>
     </footer>

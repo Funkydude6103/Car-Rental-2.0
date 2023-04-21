@@ -82,12 +82,16 @@ namespace Car_Rental
             {
                 byte[] bytes = (byte[])imageReader.GetValue(0);
                 string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                carImages.Controls.Add(new HtmlImage() { Src = "data:image/jpeg;base64," + base64String });
+                HtmlImage img = new HtmlImage();
+                img.Src = "data:image/jpeg;base64," + base64String;
+                img.Attributes.Add("class", "carImage");
+                carImages.Controls.Add(img);
             }
+
             imageReader.Close();
 
             // Display the rental information in the second section
-            rentalInfo.InnerHtml = "<p>" + model + " is available for rent starting from " + startDate.ToShortDateString() + " to " + endDate.ToShortDateString() + ". The rental rate is Rs." + price + " per Hour.</p>";
+            rentalInfo.InnerHtml = "<p>" +make+" "+ model+" "+year + " is available for rent starting from " + startDate.ToShortDateString() + " to " + endDate.ToShortDateString() + ". The rental rate is Rs." + price + " per Hour.The car is available in the following area: "+location+" </p>";
 
             // Retrieve the owner information
             SqlCommand ownerCommand = new SqlCommand("SELECT email, phone_number FROM User_ WHERE user_id = (SELECT owner_id FROM Car WHERE car_id = @carId)", connection);
