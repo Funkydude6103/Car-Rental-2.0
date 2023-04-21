@@ -37,13 +37,14 @@ namespace Car_Rental
             string phone = Request.Form["phone"];
             DateTime pickupTime = DateTime.Parse(Request.Form["pickup-datetime"]);
             DateTime returnTime = DateTime.Parse(Request.Form["return-datetime"]);
+            decimal hourlyPrice = 0;
 
             // check if rental period is within car availability period
             bool isAvailable = false;
             string connectionString = WebConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT start_date, end_date, is_available FROM Car WHERE car_id=@car_id";
+                string query = "SELECT start_date, end_date, is_available,price FROM Car WHERE car_id=@car_id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@car_id", int.Parse(Request.QueryString["carid"]));
@@ -54,11 +55,16 @@ namespace Car_Rental
                         DateTime startDate = (DateTime)reader["start_date"];
                         DateTime endDate = (DateTime)reader["end_date"];
                         isAvailable = (bool)reader["is_available"];
+                        hourlyPrice = (decimal)reader["price"];
                         reader.Close();
                         if (pickupTime >= startDate && returnTime <= endDate && isAvailable)
                         {
+
                             // save rental request
-                            string insertQuery = "INSERT INTO RentalRequest (car_id, renter_id, start_datetime, end_datetime, status) VALUES (@car_id, @renter_id, @start_datetime, @end_datetime, @status)";
+                            TimeSpan rentalPeriod = returnTime - pickupTime;
+                            decimal totalPrice = hourlyPrice * (decimal)rentalPeriod.TotalHours;
+
+                            string insertQuery = "INSERT INTO RentalRequest (car_id, renter_id, start_datetime, end_datetime, status,totalPrice) VALUES (@car_id, @renter_id, @start_datetime, @end_datetime, @status,@total)";
                             using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
                             {
                                 insertCommand.Parameters.AddWithValue("@car_id", int.Parse(Request.QueryString["carid"]));
@@ -66,6 +72,7 @@ namespace Car_Rental
                                 insertCommand.Parameters.AddWithValue("@start_datetime", pickupTime);
                                 insertCommand.Parameters.AddWithValue("@end_datetime", returnTime);
                                 insertCommand.Parameters.AddWithValue("@status", "Pending");
+                                insertCommand.Parameters.AddWithValue("@total", totalPrice);
                                 insertCommand.ExecuteNonQuery();
                             }
 
