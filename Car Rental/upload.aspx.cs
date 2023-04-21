@@ -19,18 +19,18 @@ namespace Car_Rental
         {
             if (!IsPostBack)
             {
-                if (!string.IsNullOrEmpty(Request.QueryString["user_id"]))
+                if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
-                    user_id = int.Parse(Request.QueryString["user_id"]);
+                    user_id = int.Parse(Request.QueryString["id"]);
                 }
-                if (!string.IsNullOrEmpty(Request.QueryString["car_id"]))
+                if (!string.IsNullOrEmpty(Request.QueryString["carid"]))
                 {
-                    car_id = int.Parse(Request.QueryString["car_id"]);
+                    car_id = int.Parse(Request.QueryString["carid"]);
                 }
             }
         }
 
-        protected void Sub_Click(object sender, EventArgs e)
+        protected void BUT_Click(object sender, EventArgs e)
         {
             string name = Request.Form["name"];
             string email = Request.Form["email"];
@@ -46,7 +46,7 @@ namespace Car_Rental
                 string query = "SELECT start_date, end_date, is_available FROM Car WHERE car_id=@car_id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@car_id", car_id);
+                    command.Parameters.AddWithValue("@car_id", int.Parse(Request.QueryString["carid"]));
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.Read())
@@ -54,31 +54,32 @@ namespace Car_Rental
                         DateTime startDate = (DateTime)reader["start_date"];
                         DateTime endDate = (DateTime)reader["end_date"];
                         isAvailable = (bool)reader["is_available"];
+                        reader.Close();
                         if (pickupTime >= startDate && returnTime <= endDate && isAvailable)
                         {
                             // save rental request
                             string insertQuery = "INSERT INTO RentalRequest (car_id, renter_id, start_datetime, end_datetime, status) VALUES (@car_id, @renter_id, @start_datetime, @end_datetime, @status)";
                             using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
                             {
-                                insertCommand.Parameters.AddWithValue("@car_id", car_id);
-                                insertCommand.Parameters.AddWithValue("@renter_id", user_id);
+                                insertCommand.Parameters.AddWithValue("@car_id", int.Parse(Request.QueryString["carid"]));
+                                insertCommand.Parameters.AddWithValue("@renter_id", int.Parse(Request.QueryString["id"]));
                                 insertCommand.Parameters.AddWithValue("@start_datetime", pickupTime);
                                 insertCommand.Parameters.AddWithValue("@end_datetime", returnTime);
                                 insertCommand.Parameters.AddWithValue("@status", "Pending");
                                 insertCommand.ExecuteNonQuery();
                             }
 
-                          
+
 
                             // display success message and redirect
-                            Response.Write("<script>alert('Request sent!')</script>");
-                            Response.Redirect("cars.aspx?id=" + user_id);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "redirectScript", "alert('Request sent!');window.location='cars.aspx?id=" + int.Parse(Request.QueryString["id"]) + "';", true);
+
                         }
                         else
                         {
                             // display error message
                             Response.Write("<script>alert('Car is not available for selected period.')</script>");
-                            Response.Redirect("cars.aspx?id=" + user_id);
+                           
                         }
                     }
                     reader.Close();

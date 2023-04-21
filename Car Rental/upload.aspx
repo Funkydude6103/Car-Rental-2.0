@@ -50,6 +50,7 @@
         
       </style>
 </head>
+  <body>
 <header>
     <h1>Get the Car You Want</h1>
 </header>
@@ -61,24 +62,14 @@
         <li><a href="./uploadYourCar.aspx">Upload Car</a></li>
         <li><a href="UploadedCars.aspx">Uploaded Cars</a></li>
         <li><a href="RequestsSent.aspx">Requests Sent</a></li>
-				<li><a href="HIstory.aspx">History</a></li>
+		<li><a href="HIstory.aspx">History</a></li>
         <li><a href="User Profile.aspx">User Profile</a></li>
-				<li><a href="Contact Us.aspx">Contact Us</a></li>
-        
-    
+		<li><a href="Contact Us.aspx">Contact Us</a></li>
+       
     </ul>
 </div>
-<body>
     <h1>Car Rental System Form</h1>
     <form runat="server">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="phone">Phone:</label>
-    <input type="tel" id="phone" name="phone" required>
 
     <label for="pickup-datetime">Pickup Date and Time:</label>
     <input type="datetime-local" id="pickup-datetime" name="pickup-datetime" required>
@@ -87,13 +78,14 @@
     <input type="datetime-local" id="return-datetime" name="return-datetime" required>
     <br />
         <br />
-    <asp:button type="submit" runat="server" id="Sub" nclick="Sub_Click" Text="Submit"/>
+    <asp:button type="submit" runat="server" id="submitButton" Text="Submit" OnClick="BUT_Click" />
 </form>
 
     <footer>
       <p>&copy; 2023 Rent A Wheel</p>
     </footer>
 </body>
+ </html>
 
 
 
