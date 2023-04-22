@@ -91,7 +91,7 @@
 
 				<div class="block" runat="server">
 					<label for="current-password">Current Password</label>
-					<input  runat="server" type="password" id="current" name="current-password" required>
+					<input  runat="server" type="password" id="current" name="current-password">
 				</div>
 
 				<asp:Button runat="server" class="button" type="button" ID="Button1" OnClick="Button1_Click" Text="Edit"/>
