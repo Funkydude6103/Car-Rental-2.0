@@ -90,33 +90,29 @@
 <div class="navbar">
   <ul class="options">
     
-      <li><a href="home.aspx">Home</a></li>
-      <li><a href="./cars.aspx">See Cars</a></li>
-      <li><a href="./uploadYourCar.aspx">Upload Car</a></li>
-      <li><a href="UploadedCars.aspx">Uploaded Cars</a></li>
-      <li><a href="RequestsSent.aspx">Requests Sent</a></li>
-      <li><a href="HIstory.aspx">History</a></li>
-      <li><a href="User Profile.aspx">User Profile</a></li>
-      <li><a href="Contact Us.aspx">Contact Us</a></li>
-  
+      <li><a href="./home.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">Home</a></li>
+<li><a href="./cars.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">See Cars</a></li>
+<li><a href="./uploadYourCar.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">Upload Car</a></li>
+<li><a href="UploadedCars.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">Uploaded Cars</a></li>
+<li><a href="RequestsSent.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">Requests Sent</a></li>
+<li><a href="HIstory.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">History</a></li>
+<li><a href="User Profile.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">User Profile</a></li>
+<li><a href="Contact Us.aspx?id=<%=int.Parse(Request.QueryString["id"])%>">Contact Us</a></li>
   </ul>
 </div>
 <body>
 	<h1>Review</h1>
-    <form>
-        <label for="OneWordReview">Your Experience :</label>
-        <input type="text" id="OneWordReview" name="OneWordReview" required>
+    <form runat="server">
+     
   
-        <label for="Description">Description:</label>
-        <input type="text" id="Description" name="Description" required>
+        <label runat="server" for="Description">Review:</label>
+        <input runat="server" type="text" id="Description" name="Description" required>
   
   
-        <label for="rating">Rating:</label>
-        <input type="number" id="Rating" name="Rating" required>
+        <label runat="server" for="rating">Rating:</label>
+        <input runat="server" type="number" id="Rating" name="Rating" min="1" max="5" required>
   
-
-  
-        <input type="submit" value="Submit">
+        <asp:button type="submit" runat="server" id="sub" onclick="sub_Click" Text="Submit"/>
 
     </form>
     <footer>
