@@ -53,7 +53,7 @@ namespace Car_Rental
                                        $"<img src=\"data:image/jpeg;base64,{image_url}\" alt=\"{make} {model}\">" +
                                        $"<p><strong>Model:</strong> {model}</p>" +
                                        $"<p><strong>Year:</strong> {year}</p>" +
-                                       $"<p><strong>Price per Hour:</strong> {price:C}</p>" +
+                                       $"<p><strong>Price per Hour:</strong> {price} PKR</p>" +
                                        $"<button onclick=\"window.location.href = 'edit.aspx?carid={car_id}&id={Request.QueryString["id"]}';\">Edit</button>&nbsp;" +
                                        $"<button onclick=\"window.location.href = 'deleteComfirmation.aspx?carid={car_id}&id={Request.QueryString["id"]}';\">Delete</button>&nbsp;" +
                                        $"<button onclick=\"window.location.href = 'Car Request Details.aspx?carid={car_id}&id={Request.QueryString["id"]}';\">Requests</button>&nbsp;" +

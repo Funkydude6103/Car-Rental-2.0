@@ -30,7 +30,7 @@ namespace Car_Rental
             string query = "SELECT request_id, Car.model, User_.username,User_.phone_number,User_.email, start_datetime, end_datetime, status, totalPrice FROM RentalRequest " +
                            "JOIN Car ON RentalRequest.car_id = Car.car_id " +
                            "JOIN User_ ON Car.owner_id = User_.user_id " +
-                           "WHERE User_.user_id = @userId";
+                           "WHERE RentalRequest.renter_id = @userId";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

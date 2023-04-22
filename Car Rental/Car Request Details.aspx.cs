@@ -96,7 +96,7 @@ namespace Car_Rental
             command = null;
             reader.Close();
 
-            string query2 = "SELECT start_datetime,end_datetime,status,totalPrice,username,email,phone_number,request_id  FROM RentalRequest join user_ on user_id=renter_id WHERE status = 'accepted' or  status = 'rejected'  and car_id=" + int.Parse(Request.QueryString["carid"]);
+            string query2 = "SELECT start_datetime,end_datetime,status,totalPrice,username,email,phone_number,request_id  FROM RentalRequest join user_ on user_id=renter_id WHERE (status = 'accepted' or  status = 'rejected')  and car_id=" + int.Parse(Request.QueryString["carid"]);
             SqlCommand command2 = new SqlCommand(query2, connection);
             SqlDataReader reader2 = command2.ExecuteReader();
 
