@@ -54,7 +54,7 @@ namespace Car_Rental
                                        $"<p><strong>Model:</strong> {model}</p>" +
                                        $"<p><strong>Year:</strong> {year}</p>" +
                                        $"<p><strong>Price per Hour:</strong> {price:C}</p>" +
-                                       $"<button>Edit</button>&nbsp;" +
+                                       $"<button onclick=\"window.location.href = 'edit.aspx?carid={car_id}&id={Request.QueryString["id"]}';\">Edit</button>&nbsp;" +
                                        $"<button onclick=\"window.location.href = 'deleteComfirmation.aspx?carid={car_id}&id={Request.QueryString["id"]}';\">Delete</button>&nbsp;" +
                                        $"<button onclick=\"window.location.href = 'Car Request Details.aspx?carid={car_id}&id={Request.QueryString["id"]}';\">Requests</button>&nbsp;" +
                                        $"<button onclick=\"window.location.href = 'Review.aspx?carid={car_id}&id={Request.QueryString["id"]}';\">Check Reviews</button>" +

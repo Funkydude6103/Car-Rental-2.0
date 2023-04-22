@@ -13,5 +13,14 @@ namespace Car_Rental
 
     public partial class Review
     {
+
+        /// <summary>
+        /// reviewsContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl reviewsContainer;
     }
 }

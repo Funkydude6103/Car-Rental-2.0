@@ -103,7 +103,7 @@ namespace Car_Rental
             string buttonID = reviewButton.ID;
             int carIndex = int.Parse(buttonID.Replace("ReviewButton", ""));
             string carID = GetCarID(carIndex);
-            Response.Redirect("Review.aspx?carid=" + carID+"&userid="+id.ToString());
+            Response.Redirect("Review.aspx?carid=" + carID+"&id="+ int.Parse(Request.QueryString["id"]));
         }
 
         protected void DetailsButton_Click(object sender, EventArgs e)
