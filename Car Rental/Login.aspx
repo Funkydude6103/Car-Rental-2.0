@@ -4,6 +4,7 @@
 <head>
 	<title>Login Page</title>
 	<style>
+
 		body {
 			background-color: #f2f2f2;
 			font-family: Arial, sans-serif;

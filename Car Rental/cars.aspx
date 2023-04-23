@@ -82,6 +82,89 @@ btn-review,.btn-details:hover {
   max-width: 200px;
   max-height: 200px;
 }
+     input[type="number"],input[type="text"] {
+  font-size: 16px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+ .search-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-container label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.search-container input,
+.search-container select {
+  font-size: 16px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.search-container input:focus,
+.search-container select:focus {
+  outline: none;
+  border-color: #6ba8ff;
+  box-shadow: 0px 0px 5px #6ba8ff;
+}
+
+.search-container input[type="date"]::-webkit-inner-spin-button,
+.search-container input[type="date"]::-webkit-calendar-picker-indicator,
+.search-container input[type="number"]::-webkit-inner-spin-button,
+.search-container input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.search-container input[type="text"] {
+  width: 200px;
+}
+
+      	    .price-range {
+      	        display: flex;
+      	        align-items: center;
+      	        margin-right: 10px
+      	    }
+
+#search{
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  background-color: #6ba8ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left:-700px;
+  transition: background-color 0.3s ease;
+  height:80px;
+}
+
+#search:hover {
+  background-color: #4f8ee4;
+}
+
+
 </style>
     <link rel="stylesheet" type="text/css" href="style2.css">
   </head>
@@ -106,33 +189,48 @@ btn-review,.btn-details:hover {
       
       </ul>
     </div>
-    <div class="search-container">
-      <form>
-        <input type="text" placeholder="Search cars...">
-        <div class="filters">
-          <label for="date-filter">Date:</label>
-          <input type="date" id="date-filter" name="date">
-          <label for="location-filter">Location:</label>
-          <select id="location-filter" name="location">
-            <option value="">Any location</option>
-            <option value="New York">New York</option>
-            <option value="Los Angeles">Los Angeles</option>
-            <option value="Chicago">Chicago</option>
-          </select>
-          <label for="price-filter">Price:</label>
-          <select id="price-filter" name="price">
-            <option value="">Any price</option>
-            <option value="10000">$10,000 or less</option>
-            <option value="20000">$10,000 - $20,000</option>
-            <option value="30000">$20,000 - $30,000</option>
-            <option value="40000">$30,000 or more</option>
-          </select>
-          <label for="car-filter">Car Name:</label>
-          <input type="text" id="car-filter" name="car-name">
-        </div>
-        <button type="submit">Search</button>
-      </form>
+      <br />
+      <p  style="font-size: 20px;"><strong>Search and Filter</strong></p>
+     <form runat="server">
+   <div class="search-container">
+    <div class="filters" runat="server">
+      <label for="date-filter">Date:</label>
+      <input  runat="server" type="date" id="datefilter" name="date">
+     <label for="location-filter">Location:</label>
+      <select  runat="server" id="locationfilter" name="location">
+          <option value="">-- Select location --</option>
+          <option value="Abbottabad">Abbottabad</option>
+          <option value="Bahawalpur">Bahawalpur</option>
+          <option value="Faisalabad">Faisalabad</option>
+          <option value="Gujranwala">Gujranwala</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Islamabad">Islamabad</option>
+          <option value="Karachi">Karachi</option>
+          <option value="Lahore">Lahore</option>
+          <option value="Multan">Multan</option>
+          <option value="Peshawar">Peshawar</option>
+          <option value="Quetta">Quetta</option>
+          <option value="Rawalpindi">Rawalpindi</option>
+          <option value="Sialkot">Sialkot</option>
+      </select>
+        <br />
+        <br />
+
+      <label runat="server" for="price-filter">Price Range:</label>
+        <label runat="server" for="price-filter">Min:</label>
+     <input  runat="server" type="number" id="p1" name="price-min" placeholder="Min" value="0" style="border: 1px solid #ccc;">
+        <label runat="server" for="price-filter">Max:</label>
+<input  runat="server" type="number" id="p2" name="price-max" placeholder="Max" value="0" style="border: 1px solid #ccc;">
+        <br />
+        <br />
+     
+      <label runat="server" for="car-filter">Car Name:</label>
+      <input  runat="server" type="text" id="carfilter" name="car-name">
     </div>
+    <asp:button runat="server" id="search" onclick="search_Click" Text="Search"/>
+       
+</div>
+      
       <div class="intro">
         <h2>Cars</h2>
         <div class="entry">
@@ -145,10 +243,10 @@ btn-review,.btn-details:hover {
 
    
     <main>
-      <form runat="server">
 		<asp:Panel ID="carsPanel" runat="server" CssClass="carsPanel"></asp:Panel>
+      </main>
 	</form>
-    </main>
+    
     
   </body>
 </html>
