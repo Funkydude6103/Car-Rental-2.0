@@ -25,6 +25,7 @@
 				<li><a href="HIstory.aspx?id=<%=id%>">History</a></li>
 				<li><a href="User Profile.aspx?id=<%=id%>">User Profile</a></li>
 				<li><a href="Contact Us.aspx?id=<%=id%>">Contact Us</a></li>
+			    <li><a href="Login.aspx">Logout</a></li>
 		
 		</ul>
 	</div>

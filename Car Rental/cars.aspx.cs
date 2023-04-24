@@ -174,7 +174,7 @@ namespace Car_Rental
                 }
                 if (!string.IsNullOrEmpty(carName))
                 {
-                    query += " AND c.make LIKE '%'+ @CarName + '%' OR c.model LIKE '%'+ @CarName + '%'";
+                    query += " AND c.make LIKE '%'+ @CarName + '%' OR c.model LIKE '%'+ @CarName + '%' OR c.make+' '+c.model like '%'+ @CarName + '%' ";
                 }
                 query = query + "  GROUP BY c.car_id, c.make, c.model, c.year, c.location, c.price, c.is_available";
                 SqlCommand cmd = new SqlCommand(query, con);
