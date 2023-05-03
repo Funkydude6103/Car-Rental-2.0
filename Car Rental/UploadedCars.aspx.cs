@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlClient;
@@ -46,7 +47,9 @@ namespace Car_Rental
                 string model = reader.GetString(2);
                 int year = reader.GetInt32(3);
                 decimal price = reader.GetDecimal(4);
-                string image_url = Convert.ToBase64String((byte[])reader["image_url"]);
+                String image_url = null;
+                if (reader["image_url"].ToString()!=null)
+                image_url = Convert.ToBase64String((byte[])reader["image_url"]);
 
                 string car_card_html = "<div class=\"car-card\" runat=\"\">" +
                                        $"<h2>{make} {model}</h2>" +

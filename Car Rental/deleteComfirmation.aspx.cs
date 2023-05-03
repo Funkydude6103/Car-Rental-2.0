@@ -33,20 +33,25 @@ namespace Car_Rental
             string delete_car_query = "DELETE FROM Car WHERE car_id = @car_id";
             string qurey = "DELETE FROM car_image WHERE car_id = @car_id";
             string qurey3 = "DELETE FROM RentalRequest WHERE car_id = @car_id";
+            string query4 = "Delete from Review where car_owner_id=@car_id";
 
             // Create the SQL command object
             SqlCommand command = new SqlCommand(delete_car_query, connection);
             SqlCommand command2 = new SqlCommand(qurey, connection);
             SqlCommand command3 = new SqlCommand(qurey3, connection);
+            SqlCommand command4 = new SqlCommand(query4, connection);
+
             command.Parameters.AddWithValue("@car_id", int.Parse(Request.QueryString["carid"]));
             command2.Parameters.AddWithValue("@car_id", int.Parse(Request.QueryString["carid"]));
             command3.Parameters.AddWithValue("@car_id", int.Parse(Request.QueryString["carid"]));
+            command4.Parameters.AddWithValue("@car_id", int.Parse(Request.QueryString["carid"]));
             try
             {
                 // Open the database connection and execute the query
                 connection.Open();
                 command2.ExecuteNonQuery();
                 command3.ExecuteNonQuery();
+                command4.ExecuteNonQuery();
                 int rowsAffected = command.ExecuteNonQuery();
 
                 
